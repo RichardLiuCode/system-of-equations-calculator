@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>-- Title --</title>
+    <link rel="icon" href="-- Icon URL --">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <h1 class="title">System of Equations</h1>
+    <div class="InputOutputWrapper input">
+        <button class="copyButtons" id="inputValueCopyBtn">Copy</button>
+        <div class="inputFormWrapper">
+            <div class="equationWrapper equation1">
+                <input id="a1" type="number">
+                <label>&nbspx&nbsp+&nbsp</label>
+                <input id="b1" type="number">
+                <label>&nbspy&nbsp=&nbsp</label>
+                <input id="c1" type="number">
+            </div>
+            <div class="equationWrapper equation2">
+                <input id="a2" type="number">
+                <label>&nbspx&nbsp+&nbsp</label>
+                <input id="b2" type="number">
+                <label>&nbspy&nbsp=&nbsp</label>
+                <input id="c2" type="number">
+            </div>
+        </div>
+    </div>
+    <div class="convertButtonWrapper">
+        <button id="convert">Convert</button>
+    </div>
+    <div class="InputOutputWrapper output">
+        <button class="copyButtons" id="resultValueCopyBtn">Copy</button>
+        <br>
+        <textarea id="result" placeholder="Result" readonly></textarea>
+    </div>
+</body>
+
+</html>
