@@ -133,6 +133,16 @@ textarea:focus {
     border: none;
 }
 
+.resultAreaFiller {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    border: none;
+    width: calc(100% - 400px);
+    height: 400px;
+}
+
 .InputOutputWrapper {
     margin: 0 auto;
     width: calc(50% - 40px);
