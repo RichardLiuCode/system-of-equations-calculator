@@ -11,20 +11,32 @@
 <body>
     <h1 class="title">System of Equations</h1>
     <div class="InputOutputWrapper input">
-        <button class="copyButtons" id="inputValueCopyBtn">Copy</button>
+        <button class="copyButtons button1" id="inputValueCopyBtn">Copy</button>
         <div class="inputFormWrapper">
             <div class="equationWrapper equation1">
                 <input id="a1" type="number">
-                <label>&nbspx&nbsp+&nbsp</label>
+                <label class="equationLabel label1">
+                    <span>x</span>
+                    <span>+</span>
+                </label>
                 <input id="b1" type="number">
-                <label>&nbspy&nbsp=&nbsp</label>
+                <label class="equationLabel label2">
+                    <span>y</span>
+                    <span>=</span>
+                </label>
                 <input id="c1" type="number">
             </div>
             <div class="equationWrapper equation2">
                 <input id="a2" type="number">
-                <label>&nbspx&nbsp+&nbsp</label>
+                <label class="equationLabel label3">
+                    <span>x</span>
+                    <span>+</span>
+                </label>
                 <input id="b2" type="number">
-                <label>&nbspy&nbsp=&nbsp</label>
+                <label class="equationLabel label4">
+                    <span>y</span>
+                    <span>=</span>
+                </label>
                 <input id="c2" type="number">
             </div>
         </div>
@@ -36,6 +48,7 @@
         <button class="copyButtons" id="resultValueCopyBtn">Copy</button>
         <br>
         <textarea id="result" placeholder="Result" readonly></textarea>
+        <canvas id="graph" width="1000" height="1000"></canvas>
     </div>
 </body>
 
