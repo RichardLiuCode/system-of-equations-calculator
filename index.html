@@ -2,9 +2,10 @@
 <html>
 
 <head>
-    <title>System of Equations Calculator</title>
+    <title>-- Title --</title>
     <link rel="icon" href="-- Icon URL --">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-3.4.0.min.js" charset="utf-8"></script>
     <script defer src="script.js"></script>
 </head>
 
@@ -45,7 +46,10 @@
         <button id="convert">Convert</button>
     </div>
     <div class="InputOutputWrapper output">
+        <button class="copyButtons" id="resultValueCopyBtn">Copy</button>
+        <br>
         <div id="result" placeholder="Result" readonly></div>
+        <div id="graph"></div>
     </div>
 </body>
 

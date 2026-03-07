@@ -26,7 +26,7 @@ document.getElementById("convert").addEventListener("click", function () {
          #--------#
         ${a2 != 1 ? a2 : ""}x - ${b2}(${a1}x/${b1}) = ${c2 - (b2 * (c1 / b1))}
          #--------#
-        ${a2 != 1 ? a2 : ""}x - (${b2}(${a1}/${b1}))x = ${c2 - (b2 * (c1 / b1))}
+        ${a2 != 1 ? a2 : ""}x - [${b2}(${a1}/${b1})]x = ${c2 - (b2 * (c1 / b1))}
          #--------#
         ${a2 != 1 ? a2 : ""}x - ${b2 * a1 / b1}x = ${c2 - (b2 * (c1 / b1))}
          #--------#
@@ -64,12 +64,25 @@ document.getElementById("convert").addEventListener("click", function () {
 
     document.getElementById("result").innerHTML =
         `<p style="border:none">${beautifiedHTMLString}</p>
-<p style="border:none">The solution is x = ${x} and y = ${y}</p>
+        <br>
+<p style="border:none">The solution is x = ${x} and y = ${y}.</p>
     `;
-
+    Plotly.newPlot("graph", {
+        "data": [{ "x": [x], "y": [y] }],
+        "layout": { autosize: true }
+    });
 });
 
 document.getElementById("inputValueCopyBtn").addEventListener("click", function () {
     document.getElementById("input").select();
     navigator.clipboard.writeText(document.getElementById("input").value);
+});
+document.getElementById("resultValueCopyBtn").addEventListener("click", function () {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents("result");
+    selection.removeAllRanges();
+    selection.addRange(range);
+    range.select();
+    navigator.clipboard.writeText(document.getElementById("result").value);
 });
