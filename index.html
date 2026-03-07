@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>-- Title --</title>
+    <title>System of Equations Calculator</title>
     <link rel="icon" href="-- Icon URL --">
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
@@ -16,12 +16,12 @@
             <div class="equationWrapper equation1">
                 <input id="a1" type="number">
                 <label class="equationLabel label1">
-                    <span>x</span>
+                    <span style="font-family:italic">x</span>
                     <span>+</span>
                 </label>
                 <input id="b1" type="number">
                 <label class="equationLabel label2">
-                    <span>y</span>
+                    <span style="font-family:italic">y</span>
                     <span>=</span>
                 </label>
                 <input id="c1" type="number">
@@ -29,12 +29,12 @@
             <div class="equationWrapper equation2">
                 <input id="a2" type="number">
                 <label class="equationLabel label3">
-                    <span>x</span>
+                    <span style="font-family:italic">x</span>
                     <span>+</span>
                 </label>
                 <input id="b2" type="number">
                 <label class="equationLabel label4">
-                    <span>y</span>
+                    <span style="font-family:italic">y</span>
                     <span>=</span>
                 </label>
                 <input id="c2" type="number">
@@ -45,11 +45,7 @@
         <button id="convert">Convert</button>
     </div>
     <div class="InputOutputWrapper output">
-        <button class="copyButtons" id="resultValueCopyBtn">Copy</button>
-        <br>
-        <textarea id="result" placeholder="Result" readonly></textarea>
-        <canvas id="graph" width="1000" height="1000"></canvas>
-        <div class="resultAreaFiller"></div>
+        <div id="result" placeholder="Result" readonly></div>
     </div>
 </body>
 
