@@ -13,7 +13,7 @@ document.getElementById("convert").addEventListener("click", function () {
          #--------#
         ${b1}y = ${c1} - ${a1}x
          #--------#
-        y = ${c1 / b1} - ${a1}x ÷ ${b1}
+        y = ${c1 / b1} - ${a1}x / ${b1}
          #--------#
          #--------#
         Step 2:
@@ -67,10 +67,20 @@ document.getElementById("convert").addEventListener("click", function () {
         <br>
 <p style="border:none">The solution is x = ${x} and y = ${y}.</p>
     `;
+    const solutionGraphData = { x: [x], y: [y], name: `Solution: ${x}, ${y}`, mode: "markers", marker: { color: "red", size: 7 } };
+    let equation1GraphData = { x: [x - 6, x - 4, x - 2, x, x + 2, x + 4, x + 6], name: `y = ${c1 / b1} - ${a1}x ÷ ${b1}`, mode: "lines", line: { color: "blue", width: 1 } };
+    equation1GraphData.y = equation1GraphData.x.map(function (inputX) {
+        return (c1 / b1) - a1 * inputX / b1;
+    });
+    let equation2GraphData = { x: [x - 6, x - 4, x - 2, x, x + 2, x + 4, x + 6], name: `y = ${c1 / b1} - ${a1}x ÷ ${b1}`, mode: "lines", line: { color: "green", width: 1 } };
+    equation2GraphData.y = equation2GraphData.x.map(function (inputX) {
+        return (c2 - a2 * inputX) / b2;
+    });
     Plotly.newPlot("graph", {
-        "data": [{ "x": [x], "y": [y] }],
+        "data": [equation1GraphData, equation2GraphData, solutionGraphData],
         "layout": { autosize: true }
     });
+
 });
 
 document.getElementById("inputValueCopyBtn").addEventListener("click", function () {
