@@ -67,7 +67,7 @@ document.getElementById("convert").addEventListener("click", function () {
         <br>
 <p style="border:none">The solution is x = ${x} and y = ${y}.</p>
     `;
-    const solutionGraphData = { x: [x], y: [y], name: `Solution: ${x}, ${y}`, mode: "markers", marker: { color: "red", size: 7 } };
+    const solutionGraphData = { x: [x], y: [y], name: `Solution: ${x}, ${y}`, mode: "markers", marker: { color: "red", size: 3 } };
     let equation1GraphData = { x: [x - 6, x - 4, x - 2, x, x + 2, x + 4, x + 6], name: `y = ${c1 / b1} - ${a1}x ÷ ${b1}`, mode: "lines", line: { color: "blue", width: 1 } };
     equation1GraphData.y = equation1GraphData.x.map(function (inputX) {
         return (c1 / b1) - a1 * inputX / b1;
