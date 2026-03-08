@@ -61,7 +61,7 @@ document.getElementById("convert").addEventListener("click", function () {
             text = text.replace("        ", "");
         }
         if (!(text.includes("Step")) || text == "") {
-            text = text.substring(0, text.indexOf("=")).padStart(25, "S") + text.substring(text.indexOf("="), text.length);
+            text = text.substring(0, text.indexOf("=")).padStart(20, "S") + text.substring(text.indexOf("="), text.length);
             text = text.replace(/S/g, "&nbsp");
             return text;
         } else {
@@ -70,11 +70,7 @@ document.getElementById("convert").addEventListener("click", function () {
 
     }).join("<br>");
 
-    document.getElementById("result").innerHTML =
-        `<p style="border:none">${beautifiedHTMLString}</p>
-        <br>
-<p style="border:none">The solution is x = ${x} and y = ${y}.</p>
-    `;
+    document.getElementById("result").innerHTML = `<p style="border:none">${beautifiedHTMLString}<br>The solution is x = ${x} and y = ${y}.</p>`;
     const solutionGraphData = { x: [x], y: [y], name: `Solution: ${x}, ${y}`, mode: "markers", marker: { color: "red", size: 5 } };
     let equation1GraphData = { x: [x - 6, x - 4, x - 2, x, x + 2, x + 4, x + 6], name: `y = ${c1 / b1} - ${a1}x ÷ ${b1}`, mode: "lines", line: { color: "blue", width: 1 } };
     equation1GraphData.y = equation1GraphData.x.map(function (inputX) {
