@@ -137,13 +137,17 @@ textarea:focus {
     height: calc(100% - 430px);
     min-height: 50px;
     resize: none;
-    font-family: arial;
+    font-family: monospace;
     text-align: left;
     font-size: 20px;
     padding: 5px;
     background-color: rgb(226, 250, 226);
     border-color: green;
     overflow-y: auto;
+}
+
+#result p {
+    font-family: monospace;
 }
 
 #graph {

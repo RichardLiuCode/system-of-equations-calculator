@@ -8,48 +8,48 @@ document.getElementById("convert").addEventListener("click", function () {
     const y = (a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1);
     const x = (b2 * c1 - b1 * c2) / (a1 * b2 - a2 * b1);
     const stepsTextString = `Step 1:
-         #--------#
+        #--------#
         ${a1}x + ${b1}y = ${c1}
-         #--------#
+        #--------#
         ${b1}y = ${c1} - ${a1}x
-         #--------#
+        #--------#
         y = ${c1 / b1} - ${a1}x / ${b1}
-         #--------#
-         #--------#
+        #--------#
+        #--------#
         Step 2:
-         #--------#
+        #--------#
         ${a2 != 1 ? a2 : ""}x + ${b2}y = ${c2}
-         #--------#
+        #--------#
         ${a2 != 1 ? a2 : ""}x + ${b2}(${c1 / b1} - ${a1}x/${b1}) = ${c2}
-         #--------#
+        #--------#
         ${a2 != 1 ? a2 : ""}x + ${b2 * (c1 / b1)} - ${b2}(${a1}x/${b1}) = ${c2}
-         #--------#
+        #--------#
         ${a2 != 1 ? a2 : ""}x - ${b2}(${a1}x/${b1}) = ${c2 - (b2 * (c1 / b1))}
-         #--------#
+        #--------#
         ${a2 != 1 ? a2 : ""}x - [${b2}(${a1}/${b1})]x = ${c2 - (b2 * (c1 / b1))}
-         #--------#
+        #--------#
         ${a2 != 1 ? a2 : ""}x - ${b2 * a1 / b1}x = ${c2 - (b2 * (c1 / b1))}
-         #--------#
+        #--------#
         ${a2 - b2 * a1 / b1}x = ${c2 - (b2 * (c1 / b1))}
-         #--------#
+        #--------#
         ${a2 - b2 * a1 / b1 == 1 ? `x = ${c2 - (b2 * (c1 / b1))} ` : ` ${a2 - b2 * a1 / b1}x/${a2 - b2 * a1 / b1} = ${c2 - (b2 * (c1 / b1))}/${a2 - b2 * a1 / b1}`}
         ${a2 - b2 * a1 / b1 != 1 ? `#--------#x = ${(c2 - (b2 * (c1 / b1))) / (a2 - b2 * a1 / b1)}` : ""}
-         #--------#
-         #--------#
+        #--------#
+        #--------#
         Step 3:
-         #--------#
+        #--------#
         ${a2}x + ${b2}y = ${c2}
-         #--------#
+        #--------#
         ${a2}(${(c2 - (b2 * (c1 / b1))) / (a2 - b2 * a1 / b1)}) + ${b2}y = ${c2}
-         #--------#
-         ${a2 * ((c2 - (b2 * (c1 / b1))) / (a2 - b2 * a1 / b1))} + ${b2}y = ${c2}
-         #--------#
+        #--------#
+        ${a2 * ((c2 - (b2 * (c1 / b1))) / (a2 - b2 * a1 / b1))} + ${b2}y = ${c2}
+        #--------#
         ${b2}y = ${c2} - ${a2 * ((c2 - (b2 * (c1 / b1))) / (a2 - b2 * a1 / b1))}
-         #--------#
+        #--------#
         ${b2}y = ${c2 - (a2 * ((c2 - (b2 * (c1 / b1))) / (a2 - b2 * a1 / b1)))}
-         #--------#
+        #--------#
         ${b2 == 1 ? `y = ${c2 - (a2 * ((c2 - (b2 * (c1 / b1))) / (a2 - b2 * a1 / b1)))}` : `${b2}y/${b2} = ${c2 - (a2 * ((c2 - (b2 * (c1 / b1))) / (a2 - b2 * a1 / b1)))}/${b2}`}
-         #--------#
+        #--------#
         ${b2 != 1 ? `y = ${(c2 - (a2 * ((c2 - (b2 * (c1 / b1))) / (a2 - b2 * a1 / b1)))) / b2}` : ""}
         `;
     const stepsArray = stepsTextString.split("#--------#");
@@ -58,8 +58,16 @@ document.getElementById("convert").addEventListener("click", function () {
             text = text.replace("- -", "+ ");
             text = text.replace("+ -", "- ");
             text = text.replace("\n", "");
+            text = text.replace("        ", "");
         }
-        return text;
+        if (!(text.includes("Step")) || text == "") {
+            text = text.substring(0, text.indexOf("=")).padStart(25, "S") + text.substring(text.indexOf("="), text.length);
+            text = text.replace(/S/g, "&nbsp");
+            return text;
+        } else {
+            return text;
+        }
+
     }).join("<br>");
 
     document.getElementById("result").innerHTML =
@@ -88,11 +96,5 @@ document.getElementById("inputValueCopyBtn").addEventListener("click", function 
     navigator.clipboard.writeText(document.getElementById("input").value);
 });
 document.getElementById("resultValueCopyBtn").addEventListener("click", function () {
-    const selection = window.getSelection();
-    const range = document.createRange();
-    range.selectNodeContents("result");
-    selection.removeAllRanges();
-    selection.addRange(range);
-    range.select();
-    navigator.clipboard.writeText(document.getElementById("result").value);
+    navigator.clipboard.writeText(document.getElementById("result").innerText);
 });
